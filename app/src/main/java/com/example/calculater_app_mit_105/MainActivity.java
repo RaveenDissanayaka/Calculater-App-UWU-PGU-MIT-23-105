@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         resultTv = findViewById(R.id.result_tv);
         solutionTv = findViewById(R.id.solution_tv);
 
+        //Assign Ids
         assignId(buttonC, R.id.button_c);
         assignId(buttonBrackOpen, R.id.button_open_bracket);
         assignId(buttonBrackClose, R.id.button_close_bracket);
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         assignId(buttonDot, R.id.button_dot);
     }
 
-    void assignId(MaterialButton btn, int id) {
+    void assignId(MaterialButton btn, int id) { //Assign Button IDs
         btn = findViewById(id);
         btn.setOnClickListener(this);
     }
@@ -85,13 +86,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    String getResult(String data) {
+    String getResult(String data) { //Calculate result
         try {
             Context context = Context.enter();
             context.setOptimizationLevel(-1);
             Scriptable scriptable = context.initStandardObjects();
             String finalResult = context.evaluateString(scriptable, data, "Javascript", 1, null).toString();
-            if (finalResult.endsWith(".0")){
+            if (finalResult.endsWith(".0")) {
                 finalResult = finalResult.replace(".0", "");
             }
             return finalResult;
